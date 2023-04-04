@@ -32,13 +32,16 @@ class RtpPacket:
 		header[9] = (ssrc >> 16) & 0xFF
 		header[10] = (ssrc >> 8) & 0xFF
 		header[11] = ssrc & 0xFF
-		self.header = header
-		# header[0] = ...
+		# header[10] = ...
 		# ...
+		self.header = header
+
+		# Get the payload from the argument
+		self.payload = payload
 		
 		# Get the payload from the argument
 		# self.payload = ...
-		self.payload = payload
+		
 	def decode(self, byteStream):
 		"""Decode the RTP packet."""
 		self.header = bytearray(byteStream[:HEADER_SIZE])
